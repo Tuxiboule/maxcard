@@ -1,0 +1,65 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Page avec champ d'entrée</title>
+</head>
+
+
+<body>
+    <div id="header">
+        <div id="importExport">
+            <button id="importButton">Import</button>
+            <button id="exportButton">Export</button>
+        </div>
+        <div id="language">
+            <button id="importButton">English</button>
+            <button id="exportButton">Français</button>
+        </div>
+        
+    </div>
+    <div id="main">
+        <div id="inputZone">
+            <input type="text" id="inputField" placeholder="Enter Card Name">
+            <div id="output"></div>
+            <div id="validCards"></div>
+            
+            <ul id="rejectedCards"></ul>
+        </div>
+        <div id="option">
+            <div id="gamemode">All Cards Mode</div>
+            <div id="time"></div>
+            <div id ="score"></div>
+            <h2>Validated Cards <span id="validCount">0</span> / {{ cards|length }} :</h2>
+            <div id="stats">Stats</div>
+            <div id="modes">Modes</div>
+            <div id="leaderboard">Leaderboard</div>
+        </div>
+
+    </div>
+
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputField = document.getElementById('inputField');
+        const output = document.getElementById('output');
+        const validCardsList = document.getElementById('validCards');
+        const rejectedCardsList = document.getElementById('rejectedCards');
+        const validCount = document.getElementById('validCount');
+        const importButton = document.getElementById('importButton');
+        const exportButton = document.getElementById('exportButton');
+
+        const cards = [
+            {% for card in cards %}
+                { url: "{{ card.IMG }}", name: "{{ card.NAME }}" },
+            {% endfor %}
+        ];
+
+        initializeScript(inputField, validCardsList, validCount, importButton, exportButton, cards);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+body {
+  text-align: center; /* Centrer le contenu horizontalement */
+  flex-direction: row;
+  background-color:dimgray;
+}
+
+#header {
+  background-color: rgb(201, 0, 0);
+  display: flex;
+  justify-content: right;
+}
+
+#main {
+  display: flex; /* Utiliser Flexbox pour placer les éléments horizontalement */
+  height: 90vh;
+}
+
+#inputZone {
+  width: 70%;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(255, 228, 196, 0.1); /* bisque à 70% de transparence */
+  overflow: hidden;
+}
+
+
+#gamemode {
+  font-size: 40px;
+}
+
+#option {
+  width: 30%;
+  background-color: rgba(220, 20, 60, 0.1); /* crimson à 70% de transparence */
+}
+
+
+#validCards {
+  display: flex;
+  max-height: 100%;
+  flex-wrap: wrap; /* Permet le passage à la ligne */
+  overflow: auto;
+  padding-right: 5%;
+}
+
+#card {
+  margin-right: -11%;
+}
+
+#card img{
+  width: 60%;
+}
+
+.card {
+  transition: all 0.3s ease-in-out;
+}
+
+.card.expanded {
+  transform: scale(2); /* Agrandir la carte */
+}
+
+
+
+#rejectedCards {
+  padding: 0; /* Supprime les marges intérieures de la liste */
+  display: flex; /* Utilise un conteneur flex pour aligner les éléments horizontalement */
+}
+
+#rejectedCards li {
+
+}
+
+#inputField {
+  text-align: center; /* Centrer le texte à l'intérieur de l'input */
+  font-size: 40px; /* Changer la taille de la police */
+  width: 35%; /* Définir une largeur de 80% de la largeur de son conteneur parent */
+  margin: 20px auto; /* Centrer horizontalement */
+  border-radius: 10px; /* Arrondir les bords */
+  color: navy; /* Changer la couleur du texte en bleu foncé */
+  border: 2px solid navy; /* Changer la couleur du contour en bleu foncé */
+}
+
+
+#time {
+  font-size: 40px;
+  display: hidden;
+}
+
+#score {
+  font-size: 40px;
+}
+        /* Définition de l'animation de vibration */
+@keyframes shake {
+          0% { transform: translateX(0); }
+          25% { transform: translateX(-20px); }
+          50% { transform: translateX(20px); }
+          75% { transform: translateX(-20px); }
+          100% { transform: translateX(0); }
+      }
+/* Application de l'animation aux champs de saisie */
+.shake {
+    animation: shake 0.3s ease-in-out;
+}
