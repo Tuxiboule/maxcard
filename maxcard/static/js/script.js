@@ -34,7 +34,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             const display = document.querySelector('#time');
             if (display.style.display === "") {
                 display.style.display = "block";
-                startTimer(10, display);
+                startTimer(120, display);
             }
 
             if (isInCardList) {
