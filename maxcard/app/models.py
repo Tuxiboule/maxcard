@@ -8,3 +8,8 @@ class Card(models.Model):
     FRAMETYPE = models.CharField(max_length=10000, blank=True)
     DESC = models.CharField(max_length=10000, blank=True)
     IMG = models.URLField(blank=True)
+
+
+class Player(models.Model):
+    username = models.CharField(max_length=20)
+    score = models.IntegerField()

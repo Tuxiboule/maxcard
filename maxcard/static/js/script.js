@@ -2,6 +2,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
     let validCards = [];
     let rejectedCards = [];
     let score = 0;
+    let timerInterval; // To hold the interval reference
 
     // Fonction pour ajouter une carte valide à la liste
     function addValidCard(cardName, imageUrl) {
@@ -27,19 +28,20 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
     // Événement déclenché lorsque la touche "Entrée" est pressée dans le champ d'entrée
     inputField.addEventListener('keypress', function(event) {
         if (event.key === "Enter") {
+            rules.style.display = "none";
             const inputValue = inputField.value.trim(); 
             const isInCardList = cards.some(card => card.name === inputValue);
-            display = document.querySelector('#time');
-            if (display.style.display==="") {
-                display.style.display="block";
-                startTimer(120, display);
+            const display = document.querySelector('#time');
+            if (display.style.display === "") {
+                display.style.display = "block";
+                startTimer(10, display);
             }
 
             if (isInCardList) {
                 const cardInfo = cards.find(card => card.name === inputValue);
                 const imageUrl = cardInfo.url;
                 addValidCard(inputValue, imageUrl);
-                scoreCard(cardInfo, score);
+                scoreCard(cardInfo);
             } else {
                 if (!rejectedCards.includes(inputValue)) {
                     inputField.classList.add('shake');
@@ -62,7 +64,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             const file = input.files[0];
             const reader = new FileReader();
             validCardsList.innerHTML = "";
-            validCards = [] ;
+            validCards = [];
             reader.onload = function(event) {
                 const importedData = JSON.parse(event.target.result);
                 importedData.forEach(imported_card => {
@@ -96,10 +98,9 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
         }, 0);
     });
 
-
     function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        setInterval(function () {
+        let timer = duration, minutes, seconds;
+        timerInterval = setInterval(function () {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
@@ -109,31 +110,68 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             display.textContent = minutes + ":" + seconds;
 
             if (--timer < 0) {
-                timer = duration;
+                clearInterval(timerInterval);
+                display.textContent = "00:00";
+                showScoreModal();
             }
         }, 1000);
     }
 
-    function scoreCard(card, score) {
+    function scoreCard(card) {
         score += card.name.length;
-        console.log(score);
-    
-        var scoreDisplay = document.getElementById("score");
-        console.log(scoreDisplay);
-
+        const scoreDisplay = document.getElementById("score");
         if (scoreDisplay) {
-            var scoreText = scoreDisplay.innerHTML.trim();
-            var currentScore = parseInt(scoreText, 10);
-    
-            if (!isNaN(currentScore)) {
-                scoreDisplay.innerHTML = currentScore + score;
-            } else {
-                console.error('Invalid current score in scoreDisplay:', scoreText);
-                scoreDisplay.innerHTML = score;
-            }
+            scoreDisplay.textContent = score;
         } else {
             console.error('Element not found: scoreDisplay');
         }
     }
-    
+
+    function showScoreModal() {
+        const scoreModal = document.getElementById('score-modal');
+        scoreModal.style.display = 'block';
+        
+        // Focus sur l'input du modal
+        const usernameInput = document.getElementById('username');
+        usernameInput.focus();
+        
+        const submitButton = document.getElementById('submit-score');
+        submitButton.addEventListener('click', submitScore);
+    }
+
+    function submitScore() {
+        const username = document.getElementById('username').value;
+        if (username.trim() === "") {
+            alert("Please enter a username");
+            return;
+        }
+
+        const data = {
+            username: username,
+            score: score
+        };
+
+        fetch('/save-score/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCsrfToken() // Assuming you have a function to get CSRF token
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            alert(result.message);
+            document.getElementById('score-modal').style.display = 'none';
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function getCsrfToken() {
+        // Récupérer le token CSRF depuis le meta-tag
+        return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    }
 }
