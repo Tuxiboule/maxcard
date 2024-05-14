@@ -32,7 +32,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             display = document.querySelector('#time');
             if (display.style.display==="") {
                 display.style.display="block";
-                startTimer(600, display);
+                startTimer(120, display);
             }
 
             if (isInCardList) {
@@ -97,7 +97,6 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
     });
 
 
-    // Fonction pour démarrer le minuteur
     function startTimer(duration, display) {
         var timer = duration, minutes, seconds;
         setInterval(function () {
@@ -116,10 +115,25 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
     }
 
     function scoreCard(card, score) {
-        score+=card.name.length;
+        score += card.name.length;
         console.log(score);
-        scoreDisplay = document.getElementById("score");
-        console.log(scoreDisplay)
-        scoreDisplay.innerHTML+=score;
+    
+        var scoreDisplay = document.getElementById("score");
+        console.log(scoreDisplay);
+
+        if (scoreDisplay) {
+            var scoreText = scoreDisplay.innerHTML.trim();
+            var currentScore = parseInt(scoreText, 10);
+    
+            if (!isNaN(currentScore)) {
+                scoreDisplay.innerHTML = currentScore + score;
+            } else {
+                console.error('Invalid current score in scoreDisplay:', scoreText);
+                scoreDisplay.innerHTML = score;
+            }
+        } else {
+            console.error('Element not found: scoreDisplay');
+        }
     }
+    
 }

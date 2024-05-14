@@ -1,7 +1,10 @@
 body {
   text-align: center; /* Centrer le contenu horizontalement */
   flex-direction: row;
-  background-color:dimgray;
+  background: url("/static/assets/img/background.png") no-repeat fixed;
+  background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
+  background-position: center; /* Centre l'image horizontalement et verticalement */
+  
 }
 
 #header {
@@ -19,7 +22,7 @@ body {
   width: 70%;
   padding: 0;
   margin: 0;
-  background-color: rgba(255, 228, 196, 0.1); /* bisque à 70% de transparence */
+  background-color: rgba(255, 228, 196, 0.7); /* bisque à 70% de transparence */
   overflow: hidden;
 }
 
@@ -30,7 +33,7 @@ body {
 
 #option {
   width: 30%;
-  background-color: rgba(220, 20, 60, 0.1); /* crimson à 70% de transparence */
+  background-color: rgba(220, 20, 60, 0.7); /* crimson à 70% de transparence */
 }
 
 

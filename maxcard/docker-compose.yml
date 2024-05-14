@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      # Building Docker image using the current directory and Dockerfile
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      # Mounting static files volume
+      - static_volume:/app/static
+    ports:
+      # Mapping container port 8000 to host port 8000
+      - 8000:8000
+    environment: 
+      # Specifying environment variables from .dev file (assuming it's a file)
+      - ./.dev
+    image: tuxiboule/maxcard
+
+volumes:
+  static_volume:  # Definition of the static files volume
