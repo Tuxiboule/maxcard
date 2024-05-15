@@ -52,6 +52,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://maxcard.onrender.com',
+]
+
 ROOT_URLCONF = 'maxcard.urls'
 
 TEMPLATES = [

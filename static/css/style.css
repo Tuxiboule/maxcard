@@ -71,9 +71,6 @@ body {
   display: flex; /* Utilise un conteneur flex pour aligner les éléments horizontalement */
 }
 
-#rejectedCards li {
-
-}
 
 #inputField {
   text-align: center; /* Centrer le texte à l'intérieur de l'input */

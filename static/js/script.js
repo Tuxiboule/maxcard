@@ -30,15 +30,16 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
         if (event.key === "Enter") {
             rules.style.display = "none";
             const inputValue = inputField.value.trim(); 
-            const isInCardList = cards.some(card => card.name === inputValue);
+            const isInCardList = cards.some(card => card.name.toLowerCase() === inputValue.toLowerCase());
+            const isInValidCards = validCards.some(card => card.toLowerCase() === inputValue.toLowerCase());
             const display = document.querySelector('#time');
             if (display.style.display === "") {
                 display.style.display = "block";
-                startTimer(120, display);
+                startTimer(10, display);
             }
 
-            if (isInCardList) {
-                const cardInfo = cards.find(card => card.name === inputValue);
+            if (isInCardList && !isInValidCards){
+                const cardInfo = cards.find(card => card.name.toLowerCase() === inputValue.toLowerCase());
                 const imageUrl = cardInfo.url;
                 addValidCard(inputValue, imageUrl);
                 scoreCard(cardInfo);

@@ -10,7 +10,11 @@ def home(request):
     # refresh_db()
     cards = Card.objects.all()
     top_players = Player.objects.order_by('-score')[:10]
-    return render(request, 'home.html', {'cards': cards, 'top_players': top_players})
+    return render(request,
+                  'home.html',
+                  {'cards': cards,
+                   'top_players': top_players
+                   })
 
 
 def refresh_db():
