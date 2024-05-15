@@ -1,4 +1,4 @@
-function initializeScript(inputField, validCardsList, validCount, importButton, exportButton, cards) {
+function initializeScript(inputField, validCardsList, validCount, importButton, exportButton, cards, rules) {
     let validCards = [];
     let rejectedCards = [];
     let score = 0;
@@ -35,11 +35,15 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             const display = document.querySelector('#time');
             if (display.style.display === "") {
                 display.style.display = "block";
-                startTimer(10, display);
+                startTimer(600, display);
             }
 
             if (isInCardList && !isInValidCards){
                 const cardInfo = cards.find(card => card.name.toLowerCase() === inputValue.toLowerCase());
+                console.log(cardInfo.url)
+                if (cardInfo.url.startsWith('https://images.ygoprodeck.com/')){
+                    saveCardImage(cardInfo);
+                    }
                 const imageUrl = cardInfo.url;
                 addValidCard(inputValue, imageUrl);
                 scoreCard(cardInfo);
@@ -168,6 +172,26 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
         })
         .catch(error => {
             console.error('Error:', error);
+        });
+    }
+
+
+    function saveCardImage(cardInfo) {
+        return fetch('/saveCardImage/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCsrfToken()
+            },
+            body: JSON.stringify({ cardName: cardInfo.name, imageUrl: cardInfo.url })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                return data.localUrl;
+            } else {
+                throw new Error(data.message);
+            }
         });
     }
 

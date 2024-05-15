@@ -1,7 +1,7 @@
 body {
   text-align: center; /* Centrer le contenu horizontalement */
   flex-direction: row;
-  background: url("/static/assets/img/background.png") no-repeat fixed;
+  background: url("/static/assets/background.png") no-repeat fixed;
   background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
   background-position: center; /* Centre l'image horizontalement et verticalement */
   

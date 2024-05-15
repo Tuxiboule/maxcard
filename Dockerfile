@@ -15,10 +15,7 @@ RUN pip install gunicorn
 COPY . .
 
 # set permissions and execute necessary commands
-RUN apt-get update && apt-get install -y procps
+RUN apt-get update && apt-get install -y
 RUN mkdir -p /app/static && chmod 755 /app/static
+RUN mkdir -p /app/img && chmod 755 /app/img
 RUN python manage.py collectstatic --no-input
-RUN python manage.py migrate
-
-# Définir la commande par défaut pour exécuter l'application avec Gunicorn
-CMD ["gunicorn", "maxcard.wsgi:application", "--bind", "0.0.0.0:8000"]

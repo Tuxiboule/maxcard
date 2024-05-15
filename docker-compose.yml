@@ -1,21 +1,27 @@
-version: '3.8'
-
+version: '3.6'
 services:
-  web:
-    build:
-      # Building Docker image using the current directory and Dockerfile
-      context: ./
-      dockerfile: Dockerfile
-    volumes:
-      # Mounting static files volume
+  nginx:
+    build: 
+      context: ./nginx 
+    volumes: 
       - static_volume:/app/static
-    ports:
-      # Mapping container port 8000 to host port 8000
-      - 8000:8000
-    environment: 
-      # Specifying environment variables from .dev file (assuming it's a file)
-      - ./.dev
+      - media_volume:/app/img
+    ports: 
+    - 80:80 
+    depends_on:
+      - web 
+    restart: "on-failure"
+  web:
+    build: 
+      context: ./
+    volumes: 
+      - static_volume:/app/static
+      - media_volume:/app/img
+    command: sh -c "python manage.py migrate &&
+                    gunicorn maxcard.wsgi:application --bind 0.0.0.0:8000 --reload" 
     image: tuxiboule/maxcard
+    restart: "on-failure"
 
 volumes:
-  static_volume:  # Definition of the static files volume
+  static_volume:
+  media_volume:
