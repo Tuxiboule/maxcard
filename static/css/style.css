@@ -221,6 +221,26 @@ body {
   margin: 0;
 }
 
+#source {
+    position: relative; /* Pour positionner le lien "Source" par rapport à ce conteneur */
+    text-align: center;
+    margin-top: 50%;
+}
+
+#source a {
+    text-decoration: none;
+    color: #555; /* Couleur du lien */
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 2px solid transparent; /* Ajoute une bordure transparente en bas */
+    transition: border-bottom 0.3s ease; /* Ajoute une transition fluide */
+}
+
+#source a:hover {
+    border-bottom: 2px solid #555; /* Change la couleur de la bordure au survol */
+}
+
+
 
 .modal {
   display: none; 
