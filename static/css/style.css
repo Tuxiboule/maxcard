@@ -28,13 +28,13 @@
 
 body {
   margin: 0;
-  height: 100vh; /* 100% de la hauteur de la fenêtre */
-  width: 100vw; /* 100% de la largeur de la fenêtre */
-  box-sizing: border-box; /* Inclure la bordure dans les dimensions totales */
-  text-align: center; /* Centrer le contenu horizontalement */
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  text-align: center;
   flex-direction: row;
   background: url("/static/assets/background.png");
-  background-position: center; /* Centre l'image horizontalement et verticalement */
+  background-position: center;
   background-repeat: repeat;
   background-size: cover;
   padding: 1%;
@@ -53,7 +53,7 @@ body {
 }
 
 #main {
-  display: flex; /* Utiliser Flexbox pour placer les éléments horizontalement */
+  display: flex;
   height: 100%;
   margin:0;
   padding:0;
@@ -71,7 +71,7 @@ body {
 }
 
 #cardsZone {
-  box-sizing: border-box; /* Inclure la bordure dans les dimensions totales */
+  box-sizing: border-box;
   padding: 1%;
   height: 90%;
   width: 95%;
@@ -80,7 +80,7 @@ body {
   border-style: solid;
   background: url("/static/assets/cards_background.jpeg");
   border-image: url('/static/assets/inner_border.jpeg') 30 round;
-  margin: 0px; /* Centrer horizontalement */
+  margin: 0px;
   overflow: auto;
 }
 
@@ -103,14 +103,14 @@ body {
 
 #timeInput {
   display: flex;
-  flex-direction: row; /* Afficher les éléments en ligne */
-  width: 95%; /* Définir une largeur de 95% de la largeur de son conteneur parent */
+  flex-direction: row;
+  width: 95%;
 }
 
 #validCards {
   display: flex;
   max-height: 100%;
-  flex-wrap: wrap; /* Permet le passage à la ligne */
+  flex-wrap: wrap;
   overflow: auto;
   padding-right: 5%;
 }
@@ -128,7 +128,7 @@ body {
 }
 
 .card.expanded {
-  transform: scale(2); /* Agrandir la carte */
+  transform: scale(2);
 }
 
 #rules {
@@ -137,14 +137,14 @@ body {
 }
 
 #rules h3 {
-  font-weight: bold; /* Texte en gras */
-  text-align: left; /* Alignement à gauche */
+  font-weight: bold;
+  text-align: left;
   margin: 0;
   font-size: 40px;
 }
 
 #rules div {
-  text-align: left; /* Alignement à gauche */
+  text-align: left;
   font-weight: bold;
   font-size: 30px;
   word-spacing: 3px;
@@ -155,38 +155,38 @@ body {
 
 
 #rejectedCards {
-  padding: 0; /* Supprime les marges intérieures de la liste */
-  display: flex; /* Utilise un conteneur flex pour aligner les éléments horizontalement */
+  padding: 0;
+  display: flex;
 }
 
 #inputField {
-  text-align: center; /* Centrer le texte à l'intérieur de l'input */
-  font-size: 50px; /* Changer la taille de la police */
+  text-align: center;
+  font-size: 50px;
   font-family: 'ygoTitle';
   font-weight: bold;
   width: 100%;
-  margin: 0 auto 20px; /* Centrer horizontalement avec une marge en bas */
+  margin: 0 auto 20px;
   background-color: transparent;
   box-shadow: 
-    5px 5px 10px rgba(0, 0, 0, 0.3), /* Ombre noire en bas et à droite */
-    -5px -5px 10px rgba(255, 255, 255, 0.3); /* Ombre blanche en haut et à gauche */
-  border: none; /* Retirer le contour */
-  outline: none; /* Retirer l'outline */
+    5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.3);
+  border: none;
+  outline: none;
   letter-spacing: 1px;
   word-spacing: 3px;
 }
 
 #inputField:hover {
-  cursor: default; /* Désactiver le curseur au survol */
+  cursor: default;
 }
 
 
 #time {
-  margin: 0 auto 20px; /* Centrer horizontalement avec une marge en bas */
+  margin: 0 auto 20px;
   font-size: 40px;
   display: hidden;
   background: url('/static/assets/timeBackground.png');
-  background-size: cover; /* Ajuster la taille de l'image pour couvrir tout le conteneur */
+  background-size: cover;
   color: yellow;
   font-style: italic;
   font-size: bold;
@@ -230,15 +230,15 @@ body {
 
 #source a {
     text-decoration: none;
-    color: #555; /* Couleur du lien */
+    color: #555;
     font-weight: bold;
     font-style: italic;
-    border-bottom: 2px solid transparent; /* Ajoute une bordure transparente en bas */
-    transition: border-bottom 0.3s ease; /* Ajoute une transition fluide */
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s ease;
 }
 
 #source a:hover {
-    border-bottom: 2px solid #555; /* Change la couleur de la bordure au survol */
+    border-bottom: 2px solid #555;
 }
 
 

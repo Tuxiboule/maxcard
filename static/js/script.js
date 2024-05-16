@@ -2,9 +2,8 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
     let validCards = [];
     let rejectedCards = [];
     let score = 0;
-    let timerInterval; // To hold the interval reference
+    let timerInterval;
 
-    // Fonction pour ajouter une carte valide à la liste
     function addValidCard(cardName, imageUrl) {
         if (!validCards.includes(cardName)) {
             validCards.push(cardName);
@@ -25,7 +24,6 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
         }
     }
 
-    // Événement déclenché lorsque la touche "Entrée" est pressée dans le champ d'entrée
     inputField.addEventListener('keypress', function(event) {
         if (event.key === "Enter") {
             rules.style.display = "none";
@@ -160,7 +158,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': getCsrfToken() // Assuming you have a function to get CSRF token
+                'X-CSRFToken': getCsrfToken()
             },
             body: JSON.stringify(data)
         })
