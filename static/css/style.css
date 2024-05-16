@@ -75,7 +75,7 @@ body {
   height: 90%;
   width: 95%;
   /* Border properties */
-  border-width: 20px;
+  border-width: 12px;
   border-style: solid;
   background: url("/static/assets/cards_background.jpeg");
   border-image: url('/static/assets/inner_border.jpeg') 30 round;

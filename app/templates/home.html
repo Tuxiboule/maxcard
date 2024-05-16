@@ -81,6 +81,8 @@
         const importButton = document.getElementById('importButton');
         const exportButton = document.getElementById('exportButton');
         const rules = document.getElementById('rules');
+        
+        inputField.focus();
 
         const cards = [
             {% for card in cards %}
