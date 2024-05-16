@@ -124,7 +124,6 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
 
     function scoreCard(card) {
         score += card.name.length;
-        score = "Score: " + score
         const scoreDisplay = document.getElementById("score");
         if (scoreDisplay) {
             scoreDisplay.textContent = score;

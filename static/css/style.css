@@ -71,6 +71,7 @@ body {
 
 #cardsZone {
   box-sizing: border-box; /* Inclure la bordure dans les dimensions totales */
+  padding: 1%;
   height: 90%;
   width: 95%;
   /* Border properties */
@@ -209,6 +210,17 @@ body {
     animation: shake 0.3s ease-in-out;
 }
 
+#leaderboard {
+  text-align: center; /* Aligne le contenu à gauche */
+  font-size: 25px;
+}
+
+#leaderboard {
+  text-align: center; /* Aligne le contenu à gauche */
+  font-size: 25px;
+  margin: 0;
+}
+
 
 .modal {
   display: none; 
@@ -256,4 +268,19 @@ body {
 
 .modal-content button:hover {
   opacity: 0.8;
+}
+
+.gold {
+  color: gold;
+  text-shadow: 0 0 2px black; /* Ajoute une ombre noire de 2px */
+}
+
+.silver {
+  color: silver;
+  text-shadow: 0 0 2px black; /* Ajoute une ombre noire de 2px */
+}
+
+.bronze {
+  color: #cd7f32; /* Couleur bronze */
+  text-shadow: 0 0 2px black; /* Ajoute une ombre noire de 2px */
 }

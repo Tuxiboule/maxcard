@@ -46,19 +46,20 @@
             </div> 
         </div>
         <div id="option">
-            <div id="gamemode">All Cards Mode</div>
+            <div id="gamemode">SCORE</div>
             <div id ="score"></div>
             <h2>Validated Cards <span id="validCount">0</span> / {{ cards|length }} :</h2>
-            <div id="stats">Stats</div>
             <div id="leaderboard">
                 <h2>Top 10 Players</h2>
-                <ul>
                     {% for player in top_players %}
-                        <div>{{ player.username }}: {{ player.score }} points</div>
+                    <div class="{% if forloop.counter == 1 %}gold{% elif forloop.counter == 2 %}silver{% elif forloop.counter == 3 %}bronze{% endif %}">
+                        {{ player.username }}: {{ player.score }} points
+                    </div>
                     {% endfor %}
-                </ul>           
+                    <div>______________</div>
             </div>
-            <div id="modes">Modes</div>
+            <div id="stats">Stats !!!!WIP!!!!</div>
+            <div id="modes">Modes !!!!WIP!!!!</div>
         </div>
 
     </div>
