@@ -34,8 +34,8 @@ I was looking for new projects and came up with this idea upon discovering that 
 - Django: Front/back
 - JavaScript: Front
 - Fetch API: js => django
-- Docker: Containerization of the application.
-- Nginx: Serving static files and handling web traffic.
+- Docker
+- Nginx
 
 ## Credits
 [Tuxiboule](https://github.com/Tuxiboule)
