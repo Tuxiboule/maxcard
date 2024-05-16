@@ -35,7 +35,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
             const display = document.querySelector('#time');
             if (display.style.display === "") {
                 display.style.display = "block";
-                startTimer(600, display);
+                startTimer(120, display);
             }
 
             if (isInCardList && !isInValidCards){
@@ -124,6 +124,7 @@ function initializeScript(inputField, validCardsList, validCount, importButton, 
 
     function scoreCard(card) {
         score += card.name.length;
+        score = "Score: " + score
         const scoreDisplay = document.getElementById("score");
         if (scoreDisplay) {
             scoreDisplay.textContent = score;

@@ -1,41 +1,109 @@
+@font-face {
+  font-family: 'ygoMaj';
+  src: url('/static/fonts/ygo_maj.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ygoMin';
+  src: url('/static/fonts/ygo_min.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ygoLight';
+  src: url('/static/fonts/ygo_light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ygoTitle';
+  src: url('/static/fonts/ygo_title.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  margin: 0;
+  height: 100vh; /* 100% de la hauteur de la fenêtre */
+  width: 100vw; /* 100% de la largeur de la fenêtre */
+  box-sizing: border-box; /* Inclure la bordure dans les dimensions totales */
   text-align: center; /* Centrer le contenu horizontalement */
   flex-direction: row;
-  background: url("/static/assets/background.png") no-repeat fixed;
-  background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
+  background: url("/static/assets/background.png");
   background-position: center; /* Centre l'image horizontalement et verticalement */
-  
+  background-repeat: repeat;
+  padding: 1%;
+  /* Border properties */
+  border-width: 20px;
+  border-style: solid;
+  background-color: rgba(0, 0, 0);
+  border-image: url('/static/assets/border.png') 30 round;
 }
+  
 
 #header {
   background-color: rgb(201, 0, 0);
-  display: flex;
+  display: none;
   justify-content: right;
 }
 
 #main {
   display: flex; /* Utiliser Flexbox pour placer les éléments horizontalement */
-  height: 90vh;
+  height: 100%;
+  margin:0;
+  padding:0;
 }
 
 #inputZone {
-  width: 70%;
   padding: 0;
   margin: 0;
-  background-color: rgba(255, 228, 196, 0.7); /* bisque à 70% de transparence */
   overflow: hidden;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
+#cardsZone {
+  box-sizing: border-box; /* Inclure la bordure dans les dimensions totales */
+  height: 90%;
+  width: 95%;
+  /* Border properties */
+  border-width: 20px;
+  border-style: solid;
+  background: url("/static/assets/cards_background.jpeg");
+  border-image: url('/static/assets/inner_border.jpeg') 30 round;
+  margin: 0px; /* Centrer horizontalement */
+  overflow: auto;
+}
 
 #gamemode {
   font-size: 40px;
 }
 
 #option {
+  padding: 0;
+  margin: 0;
+  height: 98%;
   width: 30%;
-  background-color: rgba(220, 20, 60, 0.7); /* crimson à 70% de transparence */
+  font-family: 'ygoMaj', sans-serif;
+  background: url("/static/assets/option_texture.png");
+  border-width: 10px;
+  border-style: solid;
+  border-image: url('/static/assets/option_border.png') 30 round;
+  overflow: auto;
 }
 
+#timeInput {
+  display: flex;
+  flex-direction: row; /* Afficher les éléments en ligne */
+  width: 95%; /* Définir une largeur de 95% de la largeur de son conteneur parent */
+}
 
 #validCards {
   display: flex;
@@ -61,9 +129,27 @@ body {
   transform: scale(2); /* Agrandir la carte */
 }
 
-#rules{
-  background-color: white;
+#rules {
+  margin: 1%;
+  font-family: 'ygoMin', sans-serif;
 }
+
+#rules h3 {
+  font-weight: bold; /* Texte en gras */
+  text-align: left; /* Alignement à gauche */
+  margin: 0;
+  font-size: 40px;
+}
+
+#rules div {
+  text-align: left; /* Alignement à gauche */
+  font-weight: bold;
+  font-size: 30px;
+  word-spacing: 3px;
+  font-family: 'ygoLight', sans-serif;
+  margin-top: 5px;
+}
+
 
 
 #rejectedCards {
@@ -71,22 +157,41 @@ body {
   display: flex; /* Utilise un conteneur flex pour aligner les éléments horizontalement */
 }
 
-
 #inputField {
   text-align: center; /* Centrer le texte à l'intérieur de l'input */
-  font-size: 40px; /* Changer la taille de la police */
-  width: 35%; /* Définir une largeur de 80% de la largeur de son conteneur parent */
-  margin: 20px auto; /* Centrer horizontalement */
-  border-radius: 10px; /* Arrondir les bords */
-  color: navy; /* Changer la couleur du texte en bleu foncé */
-  border: 2px solid navy; /* Changer la couleur du contour en bleu foncé */
+  font-size: 50px; /* Changer la taille de la police */
+  font-family: 'ygoTitle';
+  font-weight: bold;
+  width: 100%;
+  margin: 0 auto 20px; /* Centrer horizontalement avec une marge en bas */
+  background-color: transparent;
+  box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.3), /* Ombre noire en bas et à droite */
+    -5px -5px 10px rgba(255, 255, 255, 0.3); /* Ombre blanche en haut et à gauche */
+  border: none; /* Retirer le contour */
+  outline: none; /* Retirer l'outline */
+  letter-spacing: 1px;
+  word-spacing: 3px;
+}
+
+#inputField:hover {
+  cursor: default; /* Désactiver le curseur au survol */
 }
 
 
 #time {
+  margin: 0 auto 20px; /* Centrer horizontalement avec une marge en bas */
   font-size: 40px;
   display: hidden;
+  background: url('/static/assets/timeBackground.png');
+  background-size: cover; /* Ajuster la taille de l'image pour couvrir tout le conteneur */
+  color: yellow;
+  font-style: italic;
+  font-size: bold;
+  border-radius: 5%;
+  margin-left: 1%;
 }
+
 
 #score {
   font-size: 40px;

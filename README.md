@@ -15,7 +15,6 @@ Scores and Leaderboard: Displays scores and top players.
 ## Usage
 Clone the Repository:
 
-
     git clone https://github.com/Tuxiboule/Maxcard.git
     cd Maxcard
 

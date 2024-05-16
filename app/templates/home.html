@@ -20,30 +20,33 @@
             <button id="importButton">English</button>
             <button id="exportButton">Français</button>
         </div>
-        
     </div>
+
     <div id="main">
         <div id="inputZone">
-            <input type="text" id="inputField" placeholder="Enter Card Name">
-            <div id="output"></div>
-            <div id="validCards"></div>
-            <div id="rules">
-                <h3>Rules of the Game:</h3>
-                <div>The objective of the game is to name as many Yu-Gi-Oh! cards as possible within a given time limit.</div>
-                <div>A player will be presented with a text input field where they can type the name of a Yu-Gi-Oh! card.</div>
-                <div>Upon typing the name of a card and pressing Enter, the card will be added to the list of validated cards if it exists.</div>
-                <div>Validated cards will be displayed on the screen.</div>
-                <div>If a card's name is not recognized or misspelled, it will not be added to the list and the input field may shake to indicate an error.</div>
-                <div>The game will continue until the time limit expires.</div>
-                <div>After the time limit, a modal will appear where the player can enter their username and submit their score.</div>
-                <div>The player's score is determined by the number of correctly named cards.</div>
-                <div>Once the score is submitted, the page may refresh to start a new game.</div>
+            <div id='timeInput'>
+                <input type="text" id="inputField" placeholder="Enter Card Name">
+                <div id="time"></div>
             </div>
-            
+            <div id="cardsZone">
+                <div id="output"></div>
+                <div id="validCards"></div>
+                <div id="rules">
+                    <h3>[Rules of the Game]</h3>
+                    <div>The objective of the game is to name as many Yu-Gi-Oh! cards as possible within a given time limit.</div>
+                    <div>A player will be presented with a text input field where they can type the name of a Yu-Gi-Oh! card.</div>
+                    <div>Upon typing the name of a card and pressing Enter, the card will be added to the list of validated cards if it exists.</div>
+                    <div>Validated cards will be displayed on the screen.</div>
+                    <div>If a card's name is not recognized or misspelled, it will not be added to the list and the input field may shake to indicate an error.</div>
+                    <div>The game will continue until the time limit expires.</div>
+                    <div>After the time limit, a modal will appear where the player can enter their username and submit their score.</div>
+                    <div>The player's score is determined by the number of correctly named cards.</div>
+                    <div>Once the score is submitted, the page may refresh to start a new game.</div>
+                </div>
+            </div> 
         </div>
         <div id="option">
             <div id="gamemode">All Cards Mode</div>
-            <div id="time"></div>
             <div id ="score"></div>
             <h2>Validated Cards <span id="validCount">0</span> / {{ cards|length }} :</h2>
             <div id="stats">Stats</div>
