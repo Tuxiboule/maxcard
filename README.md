@@ -2,7 +2,7 @@
 ![](icon.png)
 
 ## About
-Maxcard is an interactive web application that allows users to guess and add Yu-Gi-Oh! cards to a validated list. The goal is to name as many cards as possible within a given time limit, with additional features for importing and exporting validated cards. The project is containerized with Docker and the files are served by Nginx.
+Maxcard is an interactive web application that allows users to guess a maximum if Yu-Gi-Oh! cards ion a limited time. The project is made in python/js, containerized with Docker and the files are served by Nginx.
 
 ## Features
 Validated Card Addition: Users can enter the names of Yu-Gi-Oh! cards and add them to a validated list.
@@ -31,11 +31,9 @@ I was looking for new projects and came up with this idea upon discovering that 
 
 ## Skills
 
-- Django: Used to create the web application and manage media files.
-- JavaScript: Used to handle user interactions, timers, and animations.
-- HTML/CSS: Used to structure and style the user interface.
-- Fetch API: Used to send requests to the server and handle responses.
-- File Management: Downloading and storing card images locally.
+- Django: Front/back
+- JavaScript: Front
+- Fetch API: js => django
 - Docker: Containerization of the application.
 - Nginx: Serving static files and handling web traffic.
 
